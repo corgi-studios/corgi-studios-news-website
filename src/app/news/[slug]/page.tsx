@@ -17,9 +17,10 @@ interface Post {
   body: PortableTextBlock[];
 }
 
-interface ImageValue extends SanityImageSource {
+// Use a type alias instead of an interface to extend SanityImageSource
+type ImageValue = SanityImageSource & {
   alt?: string;
-}
+};
 
 // Reusable component for rendering images in the post body
 const portableTextComponents = {
@@ -39,7 +40,7 @@ const portableTextComponents = {
 };
 
 // The main page component
-export default function PostPage({ params }: any) { // Use 'any' to bypass the build error
+export default function PostPage({ params }: any) { // Use 'any' to bypass build errors
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
