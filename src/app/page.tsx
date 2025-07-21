@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { urlForImage } from '@/sanity/lib/image'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import SubscribeForm from '@/components/SubscribeForm'
 
 async function getPosts() {
   const query = `*[_type == "post"] | order(publishedAt desc) {
@@ -56,6 +57,7 @@ export default async function HomePage() {
           </Link>
         ))}
       </div>
+      <SubscribeForm />
     </div>
   )
 }
