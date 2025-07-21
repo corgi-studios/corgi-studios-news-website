@@ -2,7 +2,6 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
-  // We'll add a secret later for security
   const { title, slug } = await request.json();
 
   if (!title || !slug) {
@@ -17,7 +16,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
   }
 
+  // --- New Logic for Greeting and Date ---
+  const now = new Date();
+  const hour = now.getHours();
+  let greeting = 'Good Morning';
+  if (hour >= 12 && hour < 17) {
+    greeting = 'Good Afternoon';
+  } else if (hour >= 17) {
+    greeting = 'Good Evening';
+  }
+
+  const formattedDate = now.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  // --- End of New Logic ---
+
   const postUrl = `https://news.corgistudios.tech/news/${slug}`;
+  const currentYear = now.getFullYear();
 
   try {
     // Step 1: Create the email campaign
@@ -35,6 +53,9 @@ export async function POST(request: Request) {
         params: {
           title: title,
           url: postUrl,
+          year: currentYear,
+          greeting: greeting, // Send the new greeting
+          date: formattedDate,   // Send the new formatted date
         },
         sender: {
             // IMPORTANT: Use an email address you have verified in Brevo
