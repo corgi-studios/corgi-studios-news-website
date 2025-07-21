@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </nav>
         </header>
         <main className="container mx-auto p-4 md:p-8 min-h-screen">{children}</main>
-        <footer className="bg-gray-800 text-white text-center p-6">
+        <footer className="bg-blue-700 text-white text-center p-6">
           <p>&copy; Copyright {currentYear} Corgi Studios</p>
         </footer>
         <BackToTopButton />
