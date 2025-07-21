@@ -1,4 +1,3 @@
-// src/components/SubscribeForm.tsx
 'use client';
 import { useState, FormEvent } from 'react';
 
@@ -46,13 +45,13 @@ export default function SubscribeForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
           required
-          className="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-corgi-blue"
+          className="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           aria-label="Email address"
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-corgi-blue text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-colors disabled:bg-gray-400"
+          className="bg-blue-600 text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-colors disabled:bg-gray-400"
         >
           {isSubmitting ? 'Subscribing...' : 'Subscribe'}
         </button>
