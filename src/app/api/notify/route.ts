@@ -16,15 +16,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
   }
 
-  // --- New Logic for Greeting and Date ---
+  // --- Updated Logic for Greeting and Date ---
   const now = new Date();
-  const hour = now.getHours();
-  let greeting = 'Good Morning';
-  if (hour >= 12 && hour < 17) {
-    greeting = 'Good Afternoon';
-  } else if (hour >= 17) {
-    greeting = 'Good Evening';
-  }
+  const greeting = 'Good Morning'; // Set the greeting to always be "Good Morning"
 
   const formattedDate = now.toLocaleDateString('en-US', {
     weekday: 'long',
@@ -32,7 +26,7 @@ export async function POST(request: Request) {
     month: 'long',
     day: 'numeric',
   });
-  // --- End of New Logic ---
+  // --- End of Updated Logic ---
 
   const postUrl = `https://news.corgistudios.tech/news/${slug}`;
   const currentYear = now.getFullYear();
@@ -54,8 +48,8 @@ export async function POST(request: Request) {
           title: title,
           url: postUrl,
           year: currentYear,
-          greeting: greeting, // Send the new greeting
-          date: formattedDate,   // Send the new formatted date
+          greeting: greeting, // Send the static greeting
+          date: formattedDate,
         },
         sender: {
             // IMPORTANT: Use an email address you have verified in Brevo
