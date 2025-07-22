@@ -53,7 +53,7 @@ export async function POST(request: Request) {
         },
         sender: {
             // IMPORTANT: Use an email address you have verified in Brevo
-            email: "noreply@corgistudios.tech", 
+            email: "noreply@crg.corgistudios.tech", 
             name: "Corgi Studios News"
         }
       }),
